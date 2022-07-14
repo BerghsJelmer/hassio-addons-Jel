@@ -25,3 +25,5 @@ for SCRIPTS in /etc/cont-init.d/*; do
     sed -i 's|/usr/bin/with-contenv bashio|/usr/bin/env bashio|g' "$SCRIPTS"
     /."$SCRIPTS" || echo "$SCRIPTS: exiting $?"
 done
+
+sed -i $"s/'description'.*/\'description\'        => \'\' !== trim((string)(\$entry->getDescription() ?? \'\')) ? \$entry->getDescription() : \'(no description)\',/" /var/www/html/app/Services/Nordigen/Conversion/Routine/GenerateTransactions.php
